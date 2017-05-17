@@ -5,32 +5,37 @@
 
 <hibernate-configuration>
 
-    <session-factory>
+	<session-factory>
 
-        <!-- Database connection settings -->
-        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://ec2-54-235-120-39.compute-1.amazonaws.com:5432/dbfumjf7jgogfk</property>
-        <property name="hibernate.connection.username">qkjcdefimrgeot</property>
-        <property name="hibernate.connection.password">1e6fc91072fbe7354e04e1ac59639d44e99765adb80ee0428596aab697d5d902</property>
+		<!-- Database connection settings -->
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property> 
+			<property name="hibernate.connection.url">jdbc:postgresql://ec2-54-235-120-39.compute-1.amazonaws.com:5432/dbfumjf7jgogfk</property> 
+			<property name="hibernate.connection.username">qkjcdefimrgeot</property> 
+			<property name="hibernate.connection.password">1e6fc91072fbe7354e04e1ac59639d44e99765adb80ee0428596aab697d5d902</property> 
 
-        <!-- SQL dialect -->
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <!-- Specify session context -->
-        <property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
-        <!-- Show SQL -->
-        <property name="hibernate.show_sql">true</property>
-        <!-- Referring Mapping File -->
-        <mapping resource="employee.hbm.xml"/>
-        <mapping resource="user.hbm.xml"/>
-        <mapping resource="persona.hbm.xml"/>
-        <mapping resource="calificacion.hbm.xml"/>
-        <mapping resource="ciudad.hbm.xml"/>
-        <mapping resource="calificanos.hbm.xml"/>
-        <mapping resource="pais.hbm.xml"/>
-        <mapping resource="paquete.hbm.xml"/>
-        <mapping resource="pqrs.hbm.xml"/>
-        <mapping resource="traking.hbm.xml"/>
-        <mapping resource="traking_paquete.hbm.xml"/>
-    </session-factory>
+		<!--  <property name='hibernate.connection.driver_class'>com.mysql.jdbc.Driver</property>
+		<property name='hibernate.connection.url'>jdbc:mysql://localhost:3306/journaldev</property>
+		<property name='hibernate.connection.username'>root</property>
+		<property name='hibernate.connection.password'>admin</property>-->
+
+		<!-- SQL dialect -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- Specify session context -->
+		<property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
+		<!-- Show SQL -->
+		<property name="hibernate.show_sql">true</property>
+		<!-- Referring Mapping File -->
+		<mapping resource="employee.hbm.xml" />
+		<mapping resource="user.hbm.xml" />
+		<mapping resource="persona.hbm.xml" />
+		<mapping resource="calificacion.hbm.xml" />
+		<mapping resource="ciudad.hbm.xml" />
+		<mapping resource="calificanos.hbm.xml" />
+		<mapping resource="pais.hbm.xml" />
+		<mapping resource="paquete.hbm.xml" />
+		<mapping resource="pqrs.hbm.xml" />
+		<mapping resource="traking.hbm.xml" />
+		<mapping resource="traking_paquete.hbm.xml" />
+	</session-factory>
 
 </hibernate-configuration>

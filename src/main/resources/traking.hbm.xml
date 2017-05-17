@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+'-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+	<class name="com.journaldev.hibernate.data.Traking" table="traking">
+		<id name="trakingId" column="id_traking" type="int"/>
+		<property name="personaId" column="id_persona" type="int"/>
+		<property name="ciudadOrigen" column="ciudad_origen" type="int"/>
+		<property name="ciudadDestino" column="ciudad_destino" type="int"/>
+		<property name="estado" column="estado" type="string"/>		
+	</class>	
+</hibernate-mapping>

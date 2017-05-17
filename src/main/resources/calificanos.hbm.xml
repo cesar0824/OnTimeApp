@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+'-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+	<class name="com.journaldev.hibernate.data.Calificanos" table="calificanos">
+		<id name="pqrId" column="id_pqr" type="int"/>
+		<property name="personaId" column="id_persona" type="int"/>
+		<property name="pqr1" column="pqr1" type="int"/>
+		<property name="pqr2" column="pqr2" type="int"/>
+		<property name="pqr3" column="pqr3" type="int"/>
+		<property name="pqr4" column="pqr4" type="int"/>
+		<property name="pqr5" column="pqr5" type="int"/>
+		<property name="pqr6" column="pqr6" type="int"/>
+		<property name="pqr7" column="pqr7" type="int"/>
+		<property name="pqr8" column="pqr8" type="int"/>
+		<property name="pqr9" column="pqr9" type="int"/>
+		<property name="otros" column="otros" type="string"/>
+	</class>	
+</hibernate-mapping>

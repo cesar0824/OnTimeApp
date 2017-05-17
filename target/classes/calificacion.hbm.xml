@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+'-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+	<class name="com.journaldev.hibernate.data.Calificacion" table="calificacion">
+		<id name="calificacionId" column="id_calificacion" type="int"/>
+		<property name="personaId" column="id_persona" type="int"/>
+		<property name="opinion" column="opinion" type="string"/>
+		<property name="rating" column="rating" type="int"/>
+		<property name="fecha" column="fecha" type="date"/>
+	</class>	
+</hibernate-mapping>

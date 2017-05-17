@@ -1,0 +1,127 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile">
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+		<pm:field>
+			<p:commandButton value="Inicio" action="#{indexBean.goToHome}" />
+		</pm:field>
+
+		<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+		<div align="center">
+			<pm:field>
+				<p:panel id="panel" header="Nuevo Usuario">
+
+					<p:messages id="msgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel for="firstname" value="Nombre:" />
+						<p:inputText id="firstname" value="#{registerBean.persona.nombre}"
+							required="true" label="Firstname">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<p:message for="firstname" display="icon" />
+
+						<p:outputLabel for="lastname" value="Apellido:" />
+						<p:inputText id="lastname" value="#{registerBean.persona.apellido}"
+							label="Lastname" required="true">
+							<f:validateLength minimum="2" />
+							<p:ajax update="msgLastname" event="keyup" />
+						</p:inputText>
+						<p:message for="lastname" id="msgLastname" display="icon" />
+
+						<p:outputLabel for="tipoId" value="Tipo Documento:" />
+						<p:selectOneMenu id="tipoId" value="#{registerBean.persona.tipoId}"
+							style="width:125px" >
+							<f:selectItem itemLabel="Select One" itemValue="" />
+							<f:selectItem itemLabel="Cedula de Ciudadania" itemValue="CC" />
+							<f:selectItem itemLabel="Cedula de Extranjeria" itemValue="CE" />
+							<f:selectItem itemLabel="NIT" itemValue="NIT" />
+							<f:selectItem itemLabel="Pasaporte" itemValue="PA" />
+							<p:ajax update="msgTipoId" event="keyup" />
+						</p:selectOneMenu>
+						<p:message for="tipoId" id="msgTipoId" display="icon" />
+
+						<p:outputLabel for="identificacion" value="Identificacion:" />
+						<p:inputText id="identificacion" value="#{registerBean.persona.identificacion}"
+							label="identificacion" required="true">
+							<f:validateLength minimum="2" />
+							<p:ajax update="msgIdentificacion" event="keyup" />
+						</p:inputText>
+						<p:message for="identificacion" id="msgIdentificacion" display="icon" />
+						
+						<p:outputLabel for="direccion" value="Direccion:" />
+						<p:inputText id="direccion" value="#{registerBean.persona.direccion}"
+							label="direccion" required="true">
+							<f:validateLength minimum="4" />
+							<p:ajax update="msgDireccion" event="keyup" />
+						</p:inputText>
+						<p:message for="direccion" id="msgDireccion" display="icon" />
+						
+						<p:outputLabel for="telefono1" value="Telefono:" />
+						<p:inputText id="telefono1" value="#{registerBean.persona.telefono1}"
+							label="telefono1" required="true">
+							<f:validateLength minimum="4" />
+							<p:ajax update="msgTelefono1" event="keyup" />
+						</p:inputText>
+						<p:message for="telefono1" id="msgTelefono1" display="icon" />
+						
+						<p:outputLabel for="telefono2" value="Telefono (Opcional):" />
+						<p:inputText id="telefono2" value="#{registerBean.persona.telefono2}"
+							label="telefono2">
+							<f:validateLength minimum="4" />
+							<p:ajax update="msgTelefono2" event="keyup" />
+						</p:inputText>
+						<p:message for="telefono2" id="msgTelefono2" display="icon" />
+						
+						<p:outputLabel for="username" value="Username:" />
+						<p:inputText id="username" value="#{registerBean.username}"
+							label="telefono2" required="true">
+							<f:validateLength minimum="4" />
+							<p:ajax update="msgUsername" event="keyup" />
+						</p:inputText>
+						<p:message for="username" id="msgUsername" display="icon" />
+						
+						<p:outputLabel for="pass" value="Contraseña:" />
+						<p:password id="pass" value="#{registerBean.password1}"
+							label="pass" required="true">
+							<f:validateLength minimum="4" />
+							<p:ajax update="msgPass" event="keyup" />
+						</p:password>
+						<p:message for="pass" id="msgPass" display="icon" />
+						
+						<p:outputLabel for="pass2" value="Confirme la Contraseña:" />
+						<p:password id="pass2" value="#{registerBean.password2}"
+							label="pass2" required="true">
+							<f:validateLength minimum="4" />
+							<p:ajax update="msgPass2" event="keyup" />
+						</p:password>
+						<p:message for="pass2" id="msgPass2" display="icon" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Guardar" update="panel"
+						actionListener="#{registerBean.register}" icon="ui-icon-check" />
+				</p:panel>
+			</pm:field>
+		</div>
+	</h:form>
+
+	<script type="text/javascript">
+		function handleLoginRequest(xhr, status, args) {
+			if (args.validationFailed || !args.loggedIn) {
+				PF('dlg').jq.effect("shake", {
+					times : 5
+				}, 100);
+			} else {
+				PF('dlg').hide();
+				$('#loginLink').fadeOut();
+			}
+		}
+	</script>
+</h:body>
+</html>

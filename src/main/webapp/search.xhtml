@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile">
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+		<pm:field>
+			<p:commandButton value="Inicio" action="#{indexBean.goToHome}" />
+		</pm:field>
+
+		<div align="center">
+			<p:outputLabel
+				value="Esta empresa nació basada en las necesidades de sus clientes para ahorrar tiempo y dinero en la compra de productos a través de Internet." />
+		</div>
+
+		<div align="center">
+			<ui:include src="header.xhtml" />
+		</div>
+
+		<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+		
+		<div align="center">
+			<pm:field>
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputLabel for="searchTraking" value="Codigo de Rastreo:" />
+					<p:inputText id="searchTraking"
+						value="#{searchTrakingBean.traking}" required="true"
+						label="searchTraking" />
+
+					<f:facet name="footer">
+						<p:commandButton value="Buscar" update="growl"
+							actionListener="#{searchTrakingBean.search}"
+							oncomplete="handleLoginRequest(xhr, status, args)" />
+					</f:facet>
+				</h:panelGrid>
+			</pm:field>
+		</div>
+
+		<div align="center">
+			<img src="header.jpg" alt="" />
+		</div>
+	</h:form>
+
+	<script type="text/javascript">
+		function handleLoginRequest(xhr, status, args) {
+			if (args.validationFailed || !args.loggedIn) {
+				PF('dlg').jq.effect("shake", {
+					times : 5
+				}, 100);
+			} else {
+				PF('dlg').hide();
+				$('#loginLink').fadeOut();
+			}
+		}
+	</script>
+</h:body>
+</html>

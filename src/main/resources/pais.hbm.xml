@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+'-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+	<class name="com.journaldev.hibernate.data.Pais" table="pais">
+		<id name="paisId" column="id_pais" type="int"/>
+		<property name="descPais" column="desc_pais" type="string"/>
+	</class>	
+</hibernate-mapping>

@@ -1,0 +1,101 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pm="http://primefaces.org/mobile">
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+		<pm:field>
+			<p:commandButton value="Inicio" action="#{indexBean.goToHome}" />
+		</pm:field>
+
+		<div align="center">
+			<p:outputLabel
+				value="Esta empresa nació basada en las necesidades de sus clientes para ahorrar tiempo y dinero en la compra de productos a través de Internet." />
+		</div>
+
+		<ui:include src="header.xhtml" />
+
+		<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+		<div align="center">
+			<pm:field>
+				<p:panel id="panel" header="Nuevo Paquete">
+
+					<p:messages id="msgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel for="dimensiones" value="Dimensiones:" />
+						<h:panelGrid>
+							<p:inputText id="dimensiones" value="#{productBean.x}"
+								required="true" label="dimensiones">
+								<f:validateLength minimum="1" />
+							</p:inputText>
+							<p:watermark for="dimensiones" value="Alto" id="dimensionesW" />
+							<p:outputLabel value=" x " />
+							<p:inputText id="dimensionesY" value="#{productBean.y}"
+								required="true" label="dimensionesY">
+								<f:validateLength minimum="1" />
+							</p:inputText>
+							<p:watermark for="dimensionesY" value="Largo" id="dimensionesWY" />
+							<p:outputLabel value=" x " />
+							<p:inputText id="dimensionesZ" value="#{productBean.z}"
+								required="true" label="dimensionesZ">
+								<f:validateLength minimum="1" />
+							</p:inputText>
+							<p:watermark for="dimensionesZ" value="Ancho" id="dimensionesWZ" />
+						</h:panelGrid>
+						<p:message for="dimensiones" display="icon" />
+
+						<p:outputLabel for="peso" value="Peso:" />
+						<p:inputText id="peso" value="#{productBean.paquete.peso}"
+							label="peso" required="true">
+							<f:validateLength minimum="1" />
+							<p:ajax update="msgpeso" event="keyup" />
+						</p:inputText>
+						<p:message for="peso" id="msgpeso" display="icon" />
+
+						<p:outputLabel for="valor" value="Valor de la Factura:" />
+						<p:inputText id="valor" value="#{productBean.paquete.valor}"
+							label="valor" required="true">
+							<f:validateLength minimum="1" />
+							<p:ajax update="msgvalor" event="keyup" />
+						</p:inputText>
+						<p:message for="valor" id="msgvalor" display="icon" />
+						
+						<p:outputLabel for="observacion" value="Obeservaciones:" />
+						<p:inputTextarea rows="6" cols="33" id="observacion" value="#{productBean.paquete.observacion}"
+						label="observacion" required="true">
+							<f:validateLength minimum="1" />
+							<p:ajax update="msgObservacion" event="keyup" />
+						</p:inputTextarea>
+						<p:message for="observacion" id="msgObservacion" display="icon" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Guardar" update="panel"
+						actionListener="#{productBean.save}" icon="ui-icon-check" />
+				</p:panel>
+			</pm:field>
+		</div>
+		<div align="center">
+			<img src="header.jpg" alt="" />
+		</div>
+	</h:form>
+
+	<script type="text/javascript">
+		function handleLoginRequest(xhr, status, args) {
+			if (args.validationFailed || !args.loggedIn) {
+				PF('dlg').jq.effect("shake", {
+					times : 5
+				}, 100);
+			} else {
+				PF('dlg').hide();
+				$('#loginLink').fadeOut();
+			}
+		}
+	</script>
+</h:body>
+</html>

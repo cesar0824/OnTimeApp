@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+'-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+	<class name="com.journaldev.hibernate.data.Paquete" table="paquete">
+		<id name="paqueteId" column="id_paquete" type="int"/>
+		<property name="dimensiones" column="dimensiones" type="string"/>
+		<property name="peso" column="peso" type="int"/>
+		<property name="valor" column="valor" type="int"/>
+		<property name="estado" column="estado" type="string"/>
+		<property name="personaId" column="id_persona" type="int"/>
+		<property name="observacion" column="observacion" type="string"/>
+	</class>	
+</hibernate-mapping>

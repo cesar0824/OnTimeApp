@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile">
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+		<pm:field>
+			<p:commandButton value="Inicio" action="#{indexBean.goToHome}" />
+		</pm:field>
+
+		<div align="center">
+		<p:outputLabel value="Esta empresa nació basada en las necesidades de sus clientes para ahorrar tiempo y dinero en la compra de productos a través de Internet."/>
+		</div>
+		
+		<ui:include src="header.xhtml" />
+
+		<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+		<div align="center">
+			<pm:field>
+				<p:dataTable var="producto" value="#{productBean.productoListAll}">
+					<p:column headerText="Dimensiones">
+						<h:outputText value="#{producto.dimensiones}" />
+					</p:column>
+
+					<p:column headerText="Peso">
+						<h:outputText value="#{producto.peso}" />
+					</p:column>
+
+					<p:column headerText="Valor">
+						<h:outputText value="#{producto.valor}" />
+					</p:column>
+
+					<p:column headerText="Estado">
+						<h:outputText value="#{producto.estado}" />
+					</p:column>
+					
+					<p:column headerText="Observaciones">
+						<h:outputText value="#{producto.observacion}" />
+					</p:column>
+				</p:dataTable>
+			</pm:field>
+		</div>
+		<div align="center">
+		<p:graphicImage name="#{megaMenuView.pathHeader}" styleClass="content" />
+		</div>
+	</h:form>
+
+	<script type="text/javascript">
+		function handleLoginRequest(xhr, status, args) {
+			if (args.validationFailed || !args.loggedIn) {
+				PF('dlg').jq.effect("shake", {
+					times : 5
+				}, 100);
+			} else {
+				PF('dlg').hide();
+				$('#loginLink').fadeOut();
+			}
+		}
+	</script>
+</h:body>
+</html>

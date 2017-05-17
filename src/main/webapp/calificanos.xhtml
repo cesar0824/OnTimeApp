@@ -1,0 +1,176 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile">
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+		<pm:field>
+			<p:commandButton value="Inicio" action="#{indexBean.goToHome}" />
+		</pm:field>
+
+		<div align="center">
+		<p:outputLabel value="Esta empresa nació basada en las necesidades de sus clientes para ahorrar tiempo y dinero en la compra de productos a través de Internet."/>
+		</div>
+		
+		<p:megaMenu orientation="#{megaMenuView.orientation}"
+			style="margin-top:20px">
+
+			<p:submenu label="Rastreo" icon="ui-icon-document">
+
+				<p:column>
+					<p:submenu label="Busqueda por Traking">
+						<p:menuitem value="Busqueda"
+							actionListener="#{megaMenuView.goToBusqueda}" />
+					</p:submenu>
+					<p:submenu label="Todos los envios">
+						<p:menuitem value="Todos"
+							actionListener="#{megaMenuView.goToListProducts}"/>
+					</p:submenu>
+				</p:column>
+				</p:submenu>
+				<p:submenu label="Producto" icon="ui-icon-pencil">
+					<p:column>
+						<p:submenu label="Ingresar Producto">
+							<p:menuitem value="Ingresar"
+								actionListener="#{megaMenuView.goToNewProduct}"/>
+						</p:submenu>
+						<p:submenu label="Ver estado solicitud producto">
+							<p:menuitem value="Estado"
+								actionListener="#{megaMenuView.goToProduct}"/>
+						</p:submenu>
+					</p:column>
+					</p:submenu>
+					<p:submenu label="PQR" icon="ui-icon-contact">
+						<p:column>
+							<p:submenu label="Ingresar una PQR">
+								<p:menuitem value="Ingresar"
+									actionListener="#{megaMenuView.goToNewPQR}"/>
+							</p:submenu>
+						</p:column>
+					</p:submenu>
+
+					<p:menuitem value="Calificanos" icon="ui-icon-close"
+						actionListener="#{megaMenuView.goToCalification}" update="growl" />
+
+					<p:menuitem value="Salir" icon="ui-icon-close"
+						actionListener="#{userLoginView.logout}" update="growl" />
+		</p:megaMenu>
+
+		<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+		<div align="center">
+			<pm:field>
+				<p:panel id="panel" header="Nuevo Usuario">
+
+					<p:messages id="msgs" />
+
+						<h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5">
+						<p:outputLabel for="pqr1"
+							value="¿Por cuánto tiempo ha estado usando nuestro producto o servicio?" />
+						<p:selectOneRadio id="pqr1" value="#{CalificanosView.calificanos.pqr1}">
+							<f:selectItem itemLabel="Una semana" itemValue="1" />
+							<f:selectItem itemLabel="Un mes" itemValue="2" />
+							<f:selectItem itemLabel="Mas de un mes" itemValue="3" />
+						</p:selectOneRadio>
+						<p:message for="pqr1" display="icon" />
+						</h:panelGrid>
+						<h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5">
+						<p:outputLabel for="pqr2"
+							value="¿Con qué frecuencia usa nuestro producto o servicio?" />
+						<p:selectOneRadio id="pqr2" value="#{CalificanosView.calificanos.pqr2}">
+							<f:selectItem itemLabel="Todos los días" itemValue="1" />
+							<f:selectItem itemLabel="En promedio, 3 veces por semana" itemValue="2" />
+							<f:selectItem itemLabel="Una vez a la semana" itemValue="3" />
+							<f:selectItem itemLabel="Una vez al mes" itemValue="4" />
+							<f:selectItem itemLabel="Nunca" itemValue="5" />
+						</p:selectOneRadio>
+						<p:message for="pqr2" display="icon" />
+						</h:panelGrid>
+						<h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5">
+						<p:outputLabel for="pqr3"
+							value="¿Cuán satisfecho se encuentra con el producto o servicio?" />
+						<p:selectOneRadio id="pqr3" value="#{CalificanosView.calificanos.pqr3}">
+							<f:selectItem itemLabel="Muy satisfecho" itemValue="1" />
+							<f:selectItem itemLabel="Satisfecho" itemValue="2" />
+							<f:selectItem itemLabel="Insatisfecho" itemValue="3" />
+							<f:selectItem itemLabel="Muy insatisfecho" itemValue="4" />
+						</p:selectOneRadio>
+						<p:message for="pqr3" display="icon" />
+						</h:panelGrid>
+						<h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5">
+						<p:outputLabel for="pqr4"
+							value="¿Qué lo impresionó más acerca de nuestro producto o servicio?" />
+						<p:selectOneRadio id="pqr4" value="#{CalificanosView.calificanos.pqr4}">
+							<f:selectItem itemLabel="Calidad" itemValue="1" />
+							<f:selectItem itemLabel="Precio" itemValue="2" />
+							<f:selectItem itemLabel="Experiencia de compra" itemValue="3" />
+							<f:selectItem itemLabel="Instalación o Primer uso" itemValue="4" />
+							<f:selectItem itemLabel="Servicio al cliente" itemValue="5" />
+						</p:selectOneRadio>
+						<p:message for="pqr4" display="icon" />
+						</h:panelGrid>
+						<h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5">
+						<p:outputLabel for="pqr5"
+							value="Comparado con productos similares ofrecidos por otras compañías, ¿cómo considera nuestro producto o servicio?" />
+						<p:selectOneRadio id="pqr5" value="#{CalificanosView.calificanos.pqr5}">
+							<f:selectItem itemLabel="Mucho mejor" itemValue="1" />
+							<f:selectItem itemLabel="Algo mejor" itemValue="2" />
+							<f:selectItem itemLabel="Más o menos igual" itemValue="3" />
+							<f:selectItem itemLabel="Algo peor" itemValue="4" />
+							<f:selectItem itemLabel="Mucho peor" itemValue="5" />
+							<f:selectItem itemLabel="No sé" itemValue="6" />
+						</p:selectOneRadio>
+						<p:message for="pqr5" display="icon" />
+						</h:panelGrid>
+						<h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5">
+						<p:outputLabel for="pqr6"
+							value="¿Usaría nuestro producto o servicio en el futuro?" />
+						<p:selectOneRadio id="pqr6" value="#{CalificanosView.calificanos.pqr6}">
+							<f:selectItem itemLabel="Definitivamente" itemValue="1" />
+							<f:selectItem itemLabel="Probablemente" itemValue="2" />
+							<f:selectItem itemLabel="No estoy seguro" itemValue="3" />
+							<f:selectItem itemLabel="Probablemente no" itemValue="4" />
+							<f:selectItem itemLabel="Definitivamente no" itemValue="5" />
+						</p:selectOneRadio>
+						<p:message for="pqr6" display="icon" />
+						</h:panelGrid>
+						<h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5">
+						<p:outputLabel for="pqr7"
+							value="¿Recomendaría nuestro producto o servicio a otra gente?" />
+						<p:selectOneRadio id="pqr7" value="#{CalificanosView.calificanos.pqr7}">
+							<f:selectItem itemLabel="Definitivamente" itemValue="1" />
+							<f:selectItem itemLabel="Probablemente" itemValue="2" />
+							<f:selectItem itemLabel="No estoy seguro" itemValue="3" />
+							<f:selectItem itemLabel="Probablemente no" itemValue="4" />
+							<f:selectItem itemLabel="Definitivamente no" itemValue="5" />
+						</p:selectOneRadio>
+						<p:message for="pqr7" display="icon" />
+						</h:panelGrid>
+					<p:commandButton value="Guardar" update="panel"
+						actionListener="#{CalificanosView.save}" icon="ui-icon-check" />
+				</p:panel>
+			</pm:field>
+		</div>
+		
+		<div align="center">
+		<p:graphicImage name="#{megaMenuView.pathHeader}" styleClass="content" />
+		</div>
+		
+	</h:form>
+
+	<script type="text/javascript">
+		function handleLoginRequest(xhr, status, args) {
+			if (args.validationFailed || !args.loggedIn) {
+				PF('dlg').jq.effect("shake", {
+					times : 5
+				}, 100);
+			} else {
+				PF('dlg').hide();
+				$('#loginLink').fadeOut();
+			}
+		}
+	</script>
+</h:body>
+</html>

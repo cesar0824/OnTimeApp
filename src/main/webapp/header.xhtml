@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile">
+<h:body>
+	<p:megaMenu orientation="#{menuViewBean.orientation}"
+		style="margin-top:20px">
+
+		<p:submenu label="Rastreo" icon="ui-icon-document">
+
+			<p:column>
+				<p:submenu label="Busqueda por Traking">
+					<p:menuitem value="Busqueda"
+						actionListener="#{menuViewBean.goToBusqueda}" />
+				</p:submenu>
+				<p:submenu label="Todos los envios">
+					<p:menuitem value="Todos"
+						actionListener="#{menuViewBean.goToListProducts}" />
+				</p:submenu>
+			</p:column>
+		</p:submenu>
+		<p:submenu label="Producto" icon="ui-icon-pencil">
+			<p:column>
+				<p:submenu label="Ingresar Producto">
+					<p:menuitem value="Ingresar"
+						actionListener="#{menuViewBean.goToNewProduct}" />
+				</p:submenu>
+				<p:submenu label="Ver estado solicitud producto">
+					<p:menuitem value="Estado"
+						actionListener="#{menuViewBean.goToProduct}" />
+				</p:submenu>
+			</p:column>
+		</p:submenu>
+		<p:submenu label="PQR" icon="ui-icon-contact">
+			<p:column>
+				<p:submenu label="Ingresar una PQR">
+					<p:menuitem value="Ingresar"
+						actionListener="#{menuViewBean.goToNewPQR}" />
+				</p:submenu>
+			</p:column>
+		</p:submenu>
+
+		<p:menuitem value="Calificanos" icon="ui-icon-close"
+			actionListener="#{menuViewBean.goToCalification}" update="growl" />
+
+		<p:menuitem value="Salir" icon="ui-icon-close"
+			actionListener="#{userBean.logout}" update="growl" />
+	</p:megaMenu>
+</h:body>
+</html>

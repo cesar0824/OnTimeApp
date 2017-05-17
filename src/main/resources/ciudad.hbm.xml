@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+'-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+	<class name="com.journaldev.hibernate.data.Ciudad" table="ciudad">
+		<id name="ciudadId" column="id_ciudad" type="int"/>
+		<property name="descCiudad" column="desc_ciudad" type="string"/>
+		<property name="paisId" column="id_pais" type="int"/>
+	</class>	
+</hibernate-mapping>

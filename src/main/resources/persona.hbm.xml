@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+'-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+	<class name="com.journaldev.hibernate.data.Persona" table="persona">
+		<id name="identificacion" column="identificacion" type="int"/>
+		<property name="tipoId" column="tipo_id" type="string"/>
+		<property name="nombre" column="nombre" type="string"/>
+		<property name="apellido" column="apellido" type="string"/>
+		<property name="direccion" column="direccion" type="string"/>
+		<property name="telefono1" column="telefono1" type="int"/>
+		<property name="telefono2" column="telefono2" type="int"/>
+	</class>	
+</hibernate-mapping>

@@ -1,0 +1,102 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile">
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+		<pm:field>
+			<p:commandButton value="Inicio" action="#{indexBean.goToHome}" />
+		</pm:field>
+
+		<div align="center">
+		<p:outputLabel value="Esta empresa nació basada en las necesidades de sus clientes para ahorrar tiempo y dinero en la compra de productos a través de Internet."/>
+		</div>
+		
+		<p:megaMenu orientation="#{megaMenuView.orientation}"
+			style="margin-top:20px">
+
+			<p:submenu label="Rastreo" icon="ui-icon-document">
+
+				<p:column>
+					<p:submenu label="Busqueda por Traking">
+						<p:menuitem value="Busqueda"
+							actionListener="#{megaMenuView.goToBusqueda}" />
+					</p:submenu>
+					<p:submenu label="Todos los envios">
+						<p:menuitem value="Todos"
+							actionListener="#{megaMenuView.goToListProducts}"/>
+					</p:submenu>
+				</p:column>
+				</p:submenu>
+				<p:submenu label="Producto" icon="ui-icon-pencil">
+					<p:column>
+						<p:submenu label="Ingresar Producto">
+							<p:menuitem value="Ingresar"
+								actionListener="#{megaMenuView.goToNewProduct}"/>
+						</p:submenu>
+						<p:submenu label="Ver estado solicitud producto">
+							<p:menuitem value="Estado"
+								actionListener="#{megaMenuView.goToProduct}"/>
+						</p:submenu>
+					</p:column>
+					</p:submenu>
+					<p:submenu label="PQR" icon="ui-icon-contact">
+						<p:column>
+							<p:submenu label="Ingresar una PQR">
+								<p:menuitem value="Ingresar"
+									actionListener="#{megaMenuView.goToNewPQR}"/>
+							</p:submenu>
+						</p:column>
+					</p:submenu>
+
+					<p:menuitem value="Calificanos" icon="ui-icon-close"
+						actionListener="#{megaMenuView.goToCalification}" update="growl" />
+
+					<p:menuitem value="Salir" icon="ui-icon-close"
+						actionListener="#{userLoginView.logout}" update="growl" />
+		</p:megaMenu>
+
+		<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+		<div align="center">
+			<pm:field>
+				<p:panel id="panel" header="Nuevo PQR">
+
+					<p:messages id="msgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel for="pqr1" value="Información de la PQR" />
+						<p:inputText id="pqr1" value="#{PQRView.pqr.opinion}"
+							required="true" label="pqr1">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<p:message for="pqr1" display="icon" />
+					</h:panelGrid>
+
+					<p:commandButton value="Guardar" update="panel"
+						actionListener="#{PQRView.save}" icon="ui-icon-check" />
+				</p:panel>
+			</pm:field>
+		</div>
+		
+		<div align="center">
+		<p:graphicImage name="#{megaMenuView.pathHeader}" styleClass="content" />
+		</div>
+	</h:form>
+
+	<script type="text/javascript">
+		function handleLoginRequest(xhr, status, args) {
+			if (args.validationFailed || !args.loggedIn) {
+				PF('dlg').jq.effect("shake", {
+					times : 5
+				}, 100);
+			} else {
+				PF('dlg').hide();
+				$('#loginLink').fadeOut();
+			}
+		}
+	</script>
+</h:body>
+</html>

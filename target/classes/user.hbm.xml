@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+'-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping>
+	<class name="com.journaldev.hibernate.data.User" table="usuario">
+		<id name="usuarioID" column="id_usuario" type="int"/>
+		<property name="usuario" column="usuario" type="string"/>
+		<property name="pass" column="pass" type="string"/>
+		<property name="rol" column="rol" type="string"/>
+		<property name="personaID" column="id_persona" type="int"/>
+	</class>	
+</hibernate-mapping>
